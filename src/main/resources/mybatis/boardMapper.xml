@@ -4,4 +4,8 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.springboot_bit.myBatis.mapper.BoardMapper">
 
+    <select id="getList" resultType="com.example.springboot_bit.entity.Board">
+        SELECT * FROM tblBoard ORDER BY boardGroup desc;
+    </select>
+
 </mapper>
