@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -30,9 +31,9 @@ class BoardControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
-
     @Test
-    public void test() throws Exception {
+    @DisplayName("Test : /board/list")
+    public void test1() throws Exception {
         log.info("--{}--",
 
                 mockMvc.perform(MockMvcRequestBuilders.get("/board/list"))
