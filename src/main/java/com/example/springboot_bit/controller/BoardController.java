@@ -3,6 +3,7 @@ package com.example.springboot_bit.controller;
 import com.example.springboot_bit.entity.Board;
 import com.example.springboot_bit.service.BoardService;
 import com.example.springboot_bit.service.impl.BoardServiceImpl;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,11 @@ public class BoardController {
         System.out.println( "idx :::: " + list.get(0).getIdx());
         log.info("결과값 : {}", list.get(0));
         return "list";
+    }
+
+    @GetMapping("/register")
+    public String register(){
+        return "register";
     }
 
 

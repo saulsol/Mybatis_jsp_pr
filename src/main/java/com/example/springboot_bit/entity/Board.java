@@ -2,6 +2,8 @@ package com.example.springboot_bit.entity;
 
 import lombok.*;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @ToString
@@ -13,7 +15,7 @@ public class Board {
     private String title; // 제목
     private String content; // 내용
     private String writer; // 작성자
-    private String inDate; // 작성일
+    private Date inDate; // 작성일
     private int count; // 조회수
     private int boardGroup; //보모글과 답글을 묶는 역할
     private int boardSequence; // 답글의 순서

@@ -1,6 +1,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
@@ -10,6 +11,19 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(
+            function () {
+                $("#regBtn").click(function (){
+                   location.href="${ctx}/board/register";
+                });
+
+            });
+
+    </script>
+
+
 </head>
 <body>
     <div class="container">
@@ -32,10 +46,15 @@
                             <td>${board.idx}</td>
                             <td>${board.title}</td>
                             <td>${board.content}</td>
-                            <td>${board.inDate}</td>
+                            <td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.inDate}"/></td>
                             <td>${board.count}</td>
                         </tr>
                     </c:forEach>
+                        <tr>
+                            <td colspan="5">
+                                <button id="regBtn" class="btn btn-xs pull-right">글쓰기</button>
+                            </td>
+                        </tr>
 
 
                 </table>
