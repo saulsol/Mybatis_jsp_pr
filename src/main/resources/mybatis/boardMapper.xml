@@ -32,8 +32,11 @@
         INSERT INTO
         tblBoard(idx, memId, title, content, writer, boardGroup, boardSequence, boardLevel, boardAvailable)
         VALUES(#{idx}, #{memId}, #{title}, #{content}, #{writer}, #{boardGroup}, 0, 0, 1)
-
-
     </insert>
+
+    <select id="login" resultType="com.example.springboot_bit.entity.Member" parameterType="com.example.springboot_bit.entity.Member">
+        SELECT * FROM tblMember WHERE memId = #{memId} AND memPwd = #{memPwd}
+    </select>
+
 
 </mapper>

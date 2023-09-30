@@ -29,7 +29,31 @@
     <div class="container">
         <h2>게시판</h2>
         <div class="panel panel-default">
-            <div class="panel-heading">BOARD</div>
+            <div class="panel-heading">
+                <c:if test="${empty loginSuccess}">
+                <form class="form-inline" action="${ctx}/login/loginProcess" method="post">
+                    <div class="form-group">
+                        <label for="memId">ID:</label>
+                        <input type="text" class="form-control" name="memId" id="memId">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">비밀번호:</label>
+                        <input type="password" class="form-control" name="memPwd" id="pwd">
+                    </div>
+
+                    <button type="submit" class="btn btn-default">로그인</button>
+                </form>
+                </c:if>
+
+                <c:if test="${!empty loginSuccess}">
+                    <form class="form-inline" action="${ctx}/login/logoutProcess" method="post">
+
+                        <label>${loginSuccess.memId}님 방문을 환영합니다.</label>
+                        <button type="submit" class="btn btn-default">로그아웃</button>
+                    </form>
+                </c:if>
+
+            </div>
             <div class="panel-body">
                 <table class="table table-bordered table-hover">
                     <thead>
@@ -50,12 +74,14 @@
                             <td>${board.count}</td>
                         </tr>
                     </c:forEach>
+
+                    <c:if test="${!empty loginSuccess}">
                         <tr>
                             <td colspan="5">
-                                <button id="regBtn" class="btn btn-xs pull-right">글쓰기</button>
+                                <button id="regBtn" class="btn btn-sm btn-primary pull-right">글쓰기</button>
                             </td>
                         </tr>
-
+                    </c:if>
 
                 </table>
 

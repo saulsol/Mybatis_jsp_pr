@@ -1,6 +1,7 @@
 package com.example.springboot_bit.service.impl;
 
 import com.example.springboot_bit.entity.Board;
+import com.example.springboot_bit.entity.Member;
 import com.example.springboot_bit.myBatis.mapper.BoardMapper;
 import com.example.springboot_bit.service.BoardService;
 import lombok.RequiredArgsConstructor;
@@ -21,5 +22,11 @@ public class BoardServiceImpl implements BoardService {
         List<Board> list = boardMapper.getList();
 
         return list;
+    }
+
+    @Override
+    public Member login(Member member) {
+        Member activeMember = boardMapper.login(member);
+        return activeMember;
     }
 }
