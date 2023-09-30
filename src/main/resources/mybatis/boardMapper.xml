@@ -10,7 +10,7 @@
 
     <insert id="insert" parameterType="com.example.springboot_bit.entity.Board">
         INSERT INTO
-        tblBoard(idx, memID, title, content, writer, boardGroup, boardSequence, boardLevel, boardAvailable)
+        tblBoard(idx, memId, title, content, writer, boardGroup, boardSequence, boardLevel, boardAvailable)
 
            SELECT
            IFNULL(max(idx)+1, 1),
@@ -18,6 +18,21 @@
            IFNULL(max(boardGroup)+1, 0),
            0, 0, 1
            FROM tblBoard;
+
+    </insert>
+
+    <insert id="insertSelectKey" parameterType="com.example.springboot_bit.entity.Board">
+        <selectKey keyProperty="idx,boardGroup" resultType="com.example.springboot_bit.entity.Board" order="BEFORE">
+            SELECT
+            IFNULL(max(idx)+1, 1) AS idx,
+            IFNULL(max(boardGroup)+1, 1) AS boardGroup
+            FROM tblBoard
+        </selectKey>
+
+        INSERT INTO
+        tblBoard(idx, memId, title, content, writer, boardGroup, boardSequence, boardLevel, boardAvailable)
+        VALUES(#{idx}, #{memId}, #{title}, #{content}, #{writer}, #{boardGroup}, 0, 0, 1)
+
 
     </insert>
 

@@ -36,5 +36,20 @@ public class BoardMapperTest {
 
     }
 
+    @Test
+    public void InsertSelectKey(){
+        Board board = new Board();
+        board.setMemId("bit01");
+        board.setTitle("title");
+        board.setContent("새로작성한 글");
+        board.setWriter("관리자");
+
+
+        boardMapper.insertSelectKey(board);
+        log.info(board.toString());
+        // SelectKey를 사용하면 DB 반영하기 전에 미리 값을 볼 수 있다.
+
+    }
+
 
 }

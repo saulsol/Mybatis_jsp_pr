@@ -10,4 +10,6 @@ public interface BoardMapper {
     public List<Board> getList();
 
     public void insert(Board board);
+
+    public void insertSelectKey(Board board);
 }
