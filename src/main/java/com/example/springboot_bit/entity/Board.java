@@ -1,8 +1,12 @@
 package com.example.springboot_bit.entity;
 
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Board {
     private int idx; // 게시물 번호
     private String memId; // 회원 id

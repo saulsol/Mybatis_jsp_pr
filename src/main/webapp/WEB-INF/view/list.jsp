@@ -1,6 +1,6 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
@@ -17,14 +17,36 @@
         <div class="panel panel-default">
             <div class="panel-heading">BOARD</div>
             <div class="panel-body">
-                <table>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>작성일</th>
+                            <th>조회수</th>
+                        </tr>
+                    </thead>
+                    <c:forEach var="board" items="${boardList}">
+                        <tr>
+                            <td>${board.idx}</td>
+                            <td>${board.title}</td>
+                            <td>${board.content}</td>
+                            <td>${board.inDate}</td>
+                            <td>${board.count}</td>
+                        </tr>
+                    </c:forEach>
+
 
                 </table>
+
+
+
             </div>
 
         </div>
     </div>
-
+    <div class="panel-footer">유저 게시판</div>
 
 </body>
 </html>
