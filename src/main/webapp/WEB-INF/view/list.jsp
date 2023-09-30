@@ -12,7 +12,18 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+    <div class="container">
+        <h2>게시판</h2>
+        <div class="panel panel-default">
+            <div class="panel-heading">BOARD</div>
+            <div class="panel-body">
+                <table>
 
+                </table>
+            </div>
+
+        </div>
+    </div>
 
 
 </body>
