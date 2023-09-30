@@ -24,5 +24,17 @@ public class BoardMapperTest {
         }
     }
 
+    @Test
+    public void testInsert(){
+        Board board = new Board();
+        board.setMemId("bit01");
+        board.setTitle("title");
+        board.setContent("새로작성한 글");
+        board.setWriter("관리자");
+
+        boardMapper.insert(board);
+
+    }
+
 
 }

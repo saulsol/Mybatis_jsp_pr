@@ -24,7 +24,7 @@
       <form action="${ctx}/board/register" method="post">
         <div class="form-group">
           <label>제목</label>
-          <input type="text" name="title" class="form-group"/>
+          <input type="text" name="title" class="form-control"/>
         </div>
         <div class="form-group">
           <label>내용</label>
@@ -32,7 +32,7 @@
         </div>
         <div class="form-group">
           <label>작성자</label>
-          <input type="text" name="writer" class="form-group"/>
+          <input type="text" name="writer" class="form-control"/>
         </div>
         <button type="submit" class="btn btn-default btn-sm">등록</button>
         <button type="reset" class="btn btn-default btn-sm">취소</button>

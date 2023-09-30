@@ -8,4 +8,17 @@
         SELECT * FROM tblBoard ORDER BY boardGroup desc;
     </select>
 
+    <insert id="insert" parameterType="com.example.springboot_bit.entity.Board">
+        INSERT INTO
+        tblBoard(idx, memID, title, content, writer, boardGroup, boardSequence, boardLevel, boardAvailable)
+
+           SELECT
+           IFNULL(max(idx)+1, 1),
+           #{memId}, #{title}, #{content}, #{writer},
+           IFNULL(max(boardGroup)+1, 0),
+           0, 0, 1
+           FROM tblBoard;
+
+    </insert>
+
 </mapper>
