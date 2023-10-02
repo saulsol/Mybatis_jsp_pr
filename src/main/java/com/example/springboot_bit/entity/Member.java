@@ -11,5 +11,6 @@ public class Member {
     // Member 클래스는 나중에 작성
     private String memId;
     private String memPwd;
+    private String memName;
 
 }

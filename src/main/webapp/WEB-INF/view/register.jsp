@@ -22,6 +22,7 @@
     <div class="panel-heading">BOARD</div>
     <div class="panel-body">
       <form action="${ctx}/board/register" method="post">
+        <input type="hidden" name="memId" value="${loginSuccess.memId}">
         <div class="form-group">
           <label>제목</label>
           <input type="text" name="title" class="form-control"/>
@@ -32,7 +33,7 @@
         </div>
         <div class="form-group">
           <label>작성자</label>
-          <input type="text" name="writer" class="form-control"/>
+          <input type="text" readonly="readonly" name="writer" class="form-control" value="${loginSuccess.memName}"/>
         </div>
         <button type="submit" class="btn btn-default btn-sm">등록</button>
         <button type="reset" class="btn btn-default btn-sm">취소</button>

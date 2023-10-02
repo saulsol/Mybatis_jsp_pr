@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -30,10 +32,15 @@ public class BoardController {
     }
 
     @GetMapping("/register")
-    public String register(){
+    public String getRegister(){
         return "register";
     }
 
+    @PostMapping("/register")
+    public String postRegister(@ModelAttribute Board board){
+        boardService.insertBoard(board);
+        return "redirect:/board/list";
+    }
 
 
 }

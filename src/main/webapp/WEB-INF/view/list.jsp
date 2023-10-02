@@ -48,7 +48,7 @@
                 <c:if test="${!empty loginSuccess}">
                     <form class="form-inline" action="${ctx}/login/logoutProcess" method="post">
 
-                        <label>${loginSuccess.memId}님 방문을 환영합니다.</label>
+                        <label>${loginSuccess.memName}님 방문을 환영합니다.</label>
                         <button type="submit" class="btn btn-default">로그아웃</button>
                     </form>
                 </c:if>

@@ -29,4 +29,11 @@ public class BoardServiceImpl implements BoardService {
         Member activeMember = boardMapper.login(member);
         return activeMember;
     }
+
+    @Override
+    public void insertBoard(Board board) {
+        boardMapper.insertSelectKey(board);
+    }
+
+
 }
