@@ -24,26 +24,25 @@
                 <table class="table table-bordered">
                     <tr>
                         <td>번호</td>
-                        <td>${read.idx}</td>
+                        <td><input type="text" class="form-control" name="idx" value="${read.idx}" readonly/></td>
                     </tr>
                     <tr>
                         <td>제목</td>
-                        <td>${read.title}</td>
+                        <td><input type="text" class="form-control" name="title" value="${read.title}" readonly/></td>
                     </tr>
                     <tr>
                         <td>내용</td>
-                        <td><textarea rows="10" class="form-control" readonly> ${read.content} </textarea></td>
+                        <td><textarea rows="10" class="form-control" name="content" readonly> ${read.content} </textarea></td>
                     </tr>
                     <tr>
                         <td>작성자</td>
-                        <td>${read.writer}</td>
+                        <td><input type="text" class="form-control" name="writer" readonly value="${read.writer}" /></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: center">
                             <button class="btn btn-sm btn-primary">답글</button>
-                            <button class="btn btn-sm btn-success">수정</button>
-                            <button class="btn btn-sm btn-warning">삭제</button>
-                            <button class="btn btn-sm btn-info">목록</button>
+                            <button class="btn btn-sm btn-success" onclick=location.href="${ctx}/board/modify?idx=${read.idx}">수정</button>
+                            <button class="btn btn-sm btn-info" onclick=location.href="${ctx}/board/list">목록</button>
                         </td>
                     </tr>
 

@@ -42,7 +42,9 @@
         SELECT * FROM tblBoard WHERE idx = #{idx}
     </select>
 
-
+    <update id="update" parameterType="com.example.springboot_bit.entity.Board" >
+        UPDATE tblBoard SET title=#{title}, content=#{content} WHERE idx=#{idx}
+    </update>
 
 
 </mapper>

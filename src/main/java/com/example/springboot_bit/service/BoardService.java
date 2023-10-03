@@ -13,4 +13,6 @@ public interface BoardService {
     public void insertBoard(Board board);
 
     public Board read(int idx);
+
+    public void update(Board board);
 }

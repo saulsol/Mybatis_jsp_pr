@@ -48,5 +48,20 @@ public class BoardController {
         return "detail";
     }
 
+    @GetMapping("/modify")
+    public String modify(@RequestParam("idx") int idx, Model model){
+        Board read = boardService.read(idx);
+        model.addAttribute("read", read);
+        return "modify";
+    }
+
+    @PostMapping("/modify")
+    public String modify(@ModelAttribute Board board){
+        boardService.update(board);
+        return "redirect:/board/list";
+    }
+
+
+
 
 }
