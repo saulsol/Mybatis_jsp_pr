@@ -38,6 +38,15 @@
                         <td>작성자</td>
                         <td>${read.writer}</td>
                     </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center">
+                            <button class="btn btn-sm btn-primary">답글</button>
+                            <button class="btn btn-sm btn-success">수정</button>
+                            <button class="btn btn-sm btn-warning">삭제</button>
+                            <button class="btn btn-sm btn-info">목록</button>
+                        </td>
+                    </tr>
+
                 </table>
             </div>
     </div>
