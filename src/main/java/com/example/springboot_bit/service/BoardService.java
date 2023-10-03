@@ -15,4 +15,6 @@ public interface BoardService {
     public Board read(int idx);
 
     public void update(Board board);
+
+    public void delete(int idx);
 }

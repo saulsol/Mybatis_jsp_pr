@@ -61,7 +61,11 @@ public class BoardController {
         return "redirect:/board/list";
     }
 
-
+    @GetMapping("/remove")
+    public String remove(@RequestParam("idx") int idx){
+        boardService.delete(idx);
+        return "redirect:/board/list";
+    }
 
 
 }

@@ -46,5 +46,8 @@
         UPDATE tblBoard SET title=#{title}, content=#{content} WHERE idx=#{idx}
     </update>
 
+    <delete id="remove" parameterType="Integer">
+        DELETE FROM tblBoard WHERE idx=#{idx}
+    </delete>
 
 </mapper>
