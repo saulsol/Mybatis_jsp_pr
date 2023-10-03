@@ -28,11 +28,9 @@
         function checkModal(result) {
             if(result === ''){
                 return;
-            }
-            if(parseInt(result) > 0) {
-                // 새로운 글이 등록되었다고 띄우기
-                $("#modal-body").html("게시글 " + parseInt(result) +"번이 등록되었습니다.");
-
+            } else{
+                // 모달 띄우기
+                $("#modal-body").html("게시물 : "+result);
             }
             $("#myModal").modal('show');
 

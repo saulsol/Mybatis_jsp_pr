@@ -37,7 +37,7 @@ public class BoardController {
     @PostMapping("/register")
     public String postRegister(@ModelAttribute Board board, RedirectAttributes attributes){
         boardService.insertBoard(board);
-        attributes.addFlashAttribute("result",board.getIdx());
+        attributes.addFlashAttribute("result", board.getIdx()+"번 글이 저장되었습니다.");
         return "redirect:/board/list";
     }
 
@@ -56,14 +56,16 @@ public class BoardController {
     }
 
     @PostMapping("/modify")
-    public String modify(@ModelAttribute Board board){
+    public String modify(@ModelAttribute Board board, RedirectAttributes attributes){
         boardService.update(board);
+        attributes.addFlashAttribute("result", board.getIdx() + "번 글이 수정되었습니다.");
         return "redirect:/board/list";
     }
 
     @GetMapping("/remove")
-    public String remove(@RequestParam("idx") int idx){
+    public String remove(@RequestParam("idx") int idx, RedirectAttributes attributes){
         boardService.delete(idx);
+        attributes.addFlashAttribute("result", idx + "번 글이 삭제되었습니다.");
         return "redirect:/board/list";
     }
 
