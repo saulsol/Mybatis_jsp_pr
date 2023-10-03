@@ -7,6 +7,7 @@ import com.example.springboot_bit.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Service
@@ -48,5 +49,19 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public void delete(int idx) {
         boardMapper.remove(idx);
+    }
+
+    // 권한이 있으면 TRUE
+    // 권한이 없으면 FALSE
+    public boolean deleteValidateCheck(HttpSession session, int idx){
+        Member member = (Member) session.getAttribute("loginSuccess");
+        Board find = boardMapper.read(idx);
+
+        return member.getMemId().equals(find.getMemId());
+    }
+
+    public Boolean modifyValidateCheck(Board board, HttpSession session){
+        Member member = (Member) session.getAttribute("loginSuccess");
+        return member.getMemId().equals(board.getMemId());
     }
 }

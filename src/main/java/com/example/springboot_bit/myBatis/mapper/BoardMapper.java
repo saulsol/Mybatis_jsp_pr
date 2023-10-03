@@ -21,4 +21,5 @@ public interface BoardMapper {
     public void update(Board board);
 
     public void remove(int idx);
+
 }

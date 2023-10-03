@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -56,16 +57,28 @@ public class BoardController {
     }
 
     @PostMapping("/modify")
-    public String modify(@ModelAttribute Board board, RedirectAttributes attributes){
-        boardService.update(board);
-        attributes.addFlashAttribute("result", board.getIdx() + "번 글이 수정되었습니다.");
+    public String modify(@ModelAttribute Board board, RedirectAttributes attributes, HttpSession session){
+        if(boardService.modifyValidateCheck(board, session)){
+            boardService.update(board);
+            attributes.addFlashAttribute("result", board.getIdx() + "번 글이 수정되었습니다.");
+            return "redirect:/board/list";
+        }
+
+        attributes.addFlashAttribute("result", "수정 권한이 없습니다.");
         return "redirect:/board/list";
     }
 
     @GetMapping("/remove")
-    public String remove(@RequestParam("idx") int idx, RedirectAttributes attributes){
+    public String remove(@RequestParam("idx") int idx, RedirectAttributes attributes, HttpSession session){
+
+        if(boardService.deleteValidateCheck(session, idx)){
+            boardService.delete(idx);
+            attributes.addFlashAttribute("result", idx + "번 글이 삭제되었습니다.");
+            return "redirect:/board/list";
+        }
+
         boardService.delete(idx);
-        attributes.addFlashAttribute("result", idx + "번 글이 삭제되었습니다.");
+        attributes.addFlashAttribute("result", "삭제 권한이 없습니다.");
         return "redirect:/board/list";
     }
 
