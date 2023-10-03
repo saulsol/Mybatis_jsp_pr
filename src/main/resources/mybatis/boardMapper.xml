@@ -38,5 +38,11 @@
         SELECT * FROM tblMember WHERE memId = #{memId} AND memPwd = #{memPwd}
     </select>
 
+    <select id="read" parameterType="Integer" resultType="com.example.springboot_bit.entity.Board">
+        SELECT * FROM tblBoard WHERE idx = #{idx}
+    </select>
+
+
+
 
 </mapper>

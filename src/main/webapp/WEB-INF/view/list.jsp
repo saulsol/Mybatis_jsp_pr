@@ -38,6 +38,8 @@
 
         }
 
+
+
     </script>
 
 
@@ -85,7 +87,7 @@
                     <c:forEach var="board" items="${boardList}">
                         <tr>
                             <td>${board.idx}</td>
-                            <td>${board.title}</td>
+                            <td><a href="${ctx}/board/get?idx=${board.idx}">${board.title}</a></td>
                             <td>${board.content}</td>
                             <td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.inDate}"/></td>
                             <td>${board.count}</td>
