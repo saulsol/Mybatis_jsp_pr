@@ -22,4 +22,7 @@ public interface BoardMapper {
 
     public void remove(int idx);
 
+    public void replyProcess(Board board);
+
+
 }

@@ -22,6 +22,7 @@
     <div class="panel-heading">BOARD</div>
     <div class="panel-body">
       <form action="${ctx}/board/modify" method="post">
+        <input type="hidden" name="memId" value="${read.memId}">
       <table class="table table-bordered">
         <tr>
           <td>번호</td>

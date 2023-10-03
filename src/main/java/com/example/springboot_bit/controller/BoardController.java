@@ -83,4 +83,17 @@ public class BoardController {
     }
 
 
+    @GetMapping("/reply")
+    public String reply(@RequestParam ("idx") int idx, Model model){
+        Board read = boardService.read(idx);
+        model.addAttribute("read", read);
+        return "comment";
+    }
+
+    @PostMapping("/reply")
+    public String reply(@ModelAttribute Board board){
+
+        return "redirect:/board/list";
+    }
+
 }

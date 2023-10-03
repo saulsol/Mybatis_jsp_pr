@@ -64,4 +64,9 @@ public class BoardServiceImpl implements BoardService {
         Member member = (Member) session.getAttribute("loginSuccess");
         return member.getMemId().equals(board.getMemId());
     }
+
+    @Override
+    public void replyProcess(Board board) {
+
+    }
 }

@@ -40,7 +40,7 @@
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: center">
-                            <button class="btn btn-sm btn-primary">답글</button>
+                            <button class="btn btn-sm btn-primary" onclick=location.href="${ctx}/board/reply?idx=${read.idx}">답글</button>
                             <button class="btn btn-sm btn-success" onclick=location.href="${ctx}/board/modify?idx=${read.idx}">수정</button>
                             <button class="btn btn-sm btn-info" onclick=location.href="${ctx}/board/list">목록</button>
                         </td>

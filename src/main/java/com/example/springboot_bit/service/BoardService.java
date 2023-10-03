@@ -20,4 +20,6 @@ public interface BoardService {
     public void delete(int idx);
     public boolean deleteValidateCheck(HttpSession session, int idx);
     public Boolean modifyValidateCheck(Board board, HttpSession session);
+
+    public void replyProcess(Board board);
 }
