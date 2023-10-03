@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -37,8 +38,9 @@ public class BoardController {
     }
 
     @PostMapping("/register")
-    public String postRegister(@ModelAttribute Board board){
+    public String postRegister(@ModelAttribute Board board, RedirectAttributes attributes){
         boardService.insertBoard(board);
+        attributes.addFlashAttribute("result",board.getIdx());
         return "redirect:/board/list";
     }
 
