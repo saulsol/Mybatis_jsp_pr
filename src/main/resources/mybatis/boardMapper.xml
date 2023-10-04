@@ -54,4 +54,20 @@
         UPDATE tblBoard SET count=count+1 WHERE idx=#{idx}
     </update>
 
+    <insert id="insertComment" parameterType="com.example.springboot_bit.entity.Comment">
+        <selectKey keyProperty="commentId" resultType="com.example.springboot_bit.entity.Comment" order="BEFORE">
+            SELECT
+            IFNULL(max(commentId)+1, 1) AS commentId
+            FROM Comment
+        </selectKey>
+
+        INSERT INTO comment(commentId, boardId, memId, memName, title, content)
+        VALUES(#{commentId}, #{boardId}, #{memId}, #{memName}, #{title}, #{content})
+    </insert>
+
+    <select id="findByBoardId" parameterType="Integer" resultType="com.example.springboot_bit.entity.Comment">
+        SELECT * FROM comment WHERE boardId = #{boardId}
+    </select>
+
+
 </mapper>

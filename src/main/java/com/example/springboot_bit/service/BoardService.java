@@ -1,6 +1,7 @@
 package com.example.springboot_bit.service;
 
 import com.example.springboot_bit.entity.Board;
+import com.example.springboot_bit.entity.Comment;
 import com.example.springboot_bit.entity.Member;
 
 import javax.servlet.http.HttpSession;
@@ -24,4 +25,9 @@ public interface BoardService {
     public void replyProcess(Board board);
 
     public void addBoardCount(int idx);
+
+    public void insertComment(Comment comment);
+
+    public List<Comment> findByBoardId(int boardId);
+
 }

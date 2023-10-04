@@ -22,8 +22,9 @@
     <div class="panel-heading">BOARD</div>
     <div class="panel-body">
       <form action="${ctx}/board/reply" method="post">
-        <input type="hidden" name="idx" value="${read.idx}">
+        <input type="hidden" name="boardId" value="${read.idx}">
         <input type="hidden" name="memId" value="${loginSuccess.memId}">
+        <input type="hidden" name="memName" value="${loginSuccess.memName}">
         <div class="form-group">
           <label>제목</label>
           <input type="text" name="title" class="form-control" value="${read.title}"/>

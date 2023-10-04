@@ -1,6 +1,7 @@
 package com.example.springboot_bit.controller;
 
 import com.example.springboot_bit.entity.Board;
+import com.example.springboot_bit.entity.Comment;
 import com.example.springboot_bit.service.BoardService;
 import com.example.springboot_bit.service.impl.BoardServiceImpl;
 import lombok.Getter;
@@ -76,8 +77,9 @@ public class BoardController {
             boardService.addBoardCount(idx);
         }
 
-
-
+        // 댓글 돌려 주기
+            model.addAttribute("commentList", boardService.findByBoardId(idx));
+        //
 
         Board read = boardService.read(idx);
         model.addAttribute("read", read);
@@ -126,9 +128,10 @@ public class BoardController {
     }
 
     @PostMapping("/reply")
-    public String reply(@ModelAttribute Board board){
+    public String reply(@ModelAttribute Comment comment){
+        boardService.insertComment(comment);
 
-        return "redirect:/board/list";
+        return "redirect:/board/get?idx="+comment.getBoardId();
     }
 
 }

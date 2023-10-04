@@ -47,6 +47,63 @@
                     </tr>
 
                 </table>
+
+            </div>
+        <div class="panel-body">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>내용</th>
+                    <th>작성일</th>
+                </tr>
+                </thead>
+                <c:forEach var="comment" items="${commentList}">
+                    <tr>
+                        <td>${comment.commentId}</td>
+                        <td>${comment.title}</td>
+                        <td>${comment.content}</td>
+                        <td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.inDate}"/></td>
+
+                    </tr>
+                </c:forEach>
+
+                <c:if test="${empty commentList}">
+                    <tr>
+                        <td colspan="4">
+                            답글이 없습니다.
+                        </td>
+                    </tr>
+                </c:if>
+
+            </table>
+
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Modal Header</h4>
+                        </div>
+                        <div class="modal-body" id="modal-body">
+                            <p>Some text in the modal.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Modal end -->
+
+
+        </div>
+
+
             </div>
     </div>
 </div>

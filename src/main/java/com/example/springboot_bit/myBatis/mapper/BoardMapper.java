@@ -1,6 +1,7 @@
 package com.example.springboot_bit.myBatis.mapper;
 
 import com.example.springboot_bit.entity.Board;
+import com.example.springboot_bit.entity.Comment;
 import com.example.springboot_bit.entity.Member;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -25,6 +26,10 @@ public interface BoardMapper {
     public void replyProcess(Board board);
 
     public void addBoardCount(int idx);
+
+    public void insertComment(Comment comment);
+
+    public List<Comment> findByBoardId(int boardId);
 
 
 }

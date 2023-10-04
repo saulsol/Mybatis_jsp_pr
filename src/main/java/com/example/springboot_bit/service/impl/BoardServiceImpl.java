@@ -1,6 +1,7 @@
 package com.example.springboot_bit.service.impl;
 
 import com.example.springboot_bit.entity.Board;
+import com.example.springboot_bit.entity.Comment;
 import com.example.springboot_bit.entity.Member;
 import com.example.springboot_bit.myBatis.mapper.BoardMapper;
 import com.example.springboot_bit.service.BoardService;
@@ -73,5 +74,15 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public void addBoardCount(int idx) {
         boardMapper.addBoardCount(idx);
+    }
+
+    @Override
+    public void insertComment(Comment comment) {
+        boardMapper.insertComment(comment);
+    }
+
+    @Override
+    public List<Comment> findByBoardId(int boardId) {
+        return boardMapper.findByBoardId(boardId);
     }
 }
