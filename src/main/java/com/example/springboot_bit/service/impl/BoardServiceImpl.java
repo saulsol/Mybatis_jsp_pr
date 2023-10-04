@@ -69,4 +69,9 @@ public class BoardServiceImpl implements BoardService {
     public void replyProcess(Board board) {
 
     }
+
+    @Override
+    public void addBoardCount(int idx) {
+        boardMapper.addBoardCount(idx);
+    }
 }

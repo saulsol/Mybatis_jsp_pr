@@ -30,7 +30,7 @@
                 return;
             } else{
                 // 모달 띄우기
-                $("#modal-body").html("게시물 : "+result);
+                $("#modal-body").html("알림 : "+result);
             }
             $("#myModal").modal('show');
 
@@ -77,7 +77,7 @@
                         <tr>
                             <th>번호</th>
                             <th>제목</th>
-                            <th>작성자</th>
+                            <th>내용</th>
                             <th>작성일</th>
                             <th>조회수</th>
                         </tr>

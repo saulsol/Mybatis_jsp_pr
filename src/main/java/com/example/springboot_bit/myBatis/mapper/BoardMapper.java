@@ -24,5 +24,7 @@ public interface BoardMapper {
 
     public void replyProcess(Board board);
 
+    public void addBoardCount(int idx);
+
 
 }

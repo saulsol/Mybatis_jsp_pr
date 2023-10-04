@@ -22,4 +22,6 @@ public interface BoardService {
     public Boolean modifyValidateCheck(Board board, HttpSession session);
 
     public void replyProcess(Board board);
+
+    public void addBoardCount(int idx);
 }

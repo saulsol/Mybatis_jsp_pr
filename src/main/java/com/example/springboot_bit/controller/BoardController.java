@@ -11,6 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -43,7 +46,39 @@ public class BoardController {
     }
 
     @GetMapping("/get")
-    public String get(@RequestParam("idx") int idx, Model model){
+    public String get(@RequestParam("idx") int idx, Model model, HttpSession session,
+                      RedirectAttributes attributes, HttpServletRequest request, HttpServletResponse response){
+
+        if(session.getAttribute("loginSuccess") == null){
+            attributes.addFlashAttribute("result", "로그인을 먼저 해야합니다.");
+            return "redirect:/board/list";
+        }
+
+
+        // 조회수 증가
+        Cookie[] cookies = request.getCookies();
+        Cookie visitCookie = null;
+        for(Cookie cookie : cookies){
+            if(cookie.getName().contains("visit_cookie"+request.getParameter("idx"))){
+                visitCookie = cookie;
+                break;
+            }
+        }
+
+        if(visitCookie != null && visitCookie.getValue().equals(request.getParameter("idx"))){
+            visitCookie.setValue(request.getParameter("idx"));
+            visitCookie.setMaxAge(60 * 60 * 2);
+            response.addCookie(visitCookie);
+        }else {
+            Cookie newCookie = new Cookie("visit_cookie" + request.getParameter("idx"), request.getParameter("idx"));
+            newCookie.setMaxAge(60 * 60 * 2);
+            response.addCookie(newCookie);
+            boardService.addBoardCount(idx);
+        }
+
+
+
+
         Board read = boardService.read(idx);
         model.addAttribute("read", read);
         return "detail";
