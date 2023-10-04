@@ -12,5 +12,9 @@ public class Member {
     private String memId;
     private String memPwd;
     private String memName;
+    private String memPhone;
+    private String memAddr;
+
+
 
 }

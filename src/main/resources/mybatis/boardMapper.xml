@@ -69,5 +69,13 @@
         SELECT * FROM comment WHERE boardId = #{boardId}
     </select>
 
+    <insert id="insertMember" parameterType="com.example.springboot_bit.entity.Member">
+        INSERT INTO tblMember(memId, memPwd, memName, memPhone, memAddr)
+        VALUES(#{memId}, #{memPwd}, #{memName}, #{memPhone}, #{memAddr})
+    </insert>
+
+    <select id="duplicateMemberCheck" parameterType="String" resultType="String">
+        SELECT memId FROM tblMember WHERE memId = #{memId}
+    </select>
 
 </mapper>

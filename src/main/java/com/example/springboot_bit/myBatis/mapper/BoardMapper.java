@@ -31,5 +31,7 @@ public interface BoardMapper {
 
     public List<Comment> findByBoardId(int boardId);
 
+    public void insertMember(Member member);
 
+    public String duplicateMemberCheck(String memId);
 }

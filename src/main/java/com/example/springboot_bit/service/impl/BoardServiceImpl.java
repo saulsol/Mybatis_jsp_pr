@@ -85,4 +85,16 @@ public class BoardServiceImpl implements BoardService {
     public List<Comment> findByBoardId(int boardId) {
         return boardMapper.findByBoardId(boardId);
     }
+
+    @Override
+    public void insertMember(Member member) {
+        boardMapper.insertMember(member);
+    }
+
+    @Override
+    public String duplicateMemberCheck(String memId) {
+        return boardMapper.duplicateMemberCheck(memId);
+    }
+
+
 }

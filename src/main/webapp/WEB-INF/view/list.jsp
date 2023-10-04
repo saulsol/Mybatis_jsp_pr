@@ -59,6 +59,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-default">로그인</button>
+                    <button type="button" class="btn btn-default" onclick=location.href="${ctx}/member/register">회원가입</button>
                 </form>
                 </c:if>
 
