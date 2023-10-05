@@ -2,6 +2,8 @@ package com.example.springboot_bit.controller;
 
 import com.example.springboot_bit.entity.Board;
 import com.example.springboot_bit.entity.Comment;
+import com.example.springboot_bit.entity.PageInfo;
+import com.example.springboot_bit.entity.PageMaker;
 import com.example.springboot_bit.service.BoardService;
 import com.example.springboot_bit.service.impl.BoardServiceImpl;
 import lombok.Getter;
@@ -26,9 +28,18 @@ public class BoardController {
 
     private final BoardService boardService;
     @GetMapping("/list")
-    public String list(Model model){
-        List<Board> list = boardService.getList();
+    public String list(@ModelAttribute PageInfo pageInfo, Model model){
+        List<Board> list = boardService.getList(pageInfo);
+
+        // 페이징 처리에 필요한 부분 추가
+        PageMaker pageMaker = new PageMaker();
+        pageMaker.setPageInfo(pageInfo);
+        pageMaker.setTotalCount(boardService.totalCount());
+
+
         model.addAttribute("boardList", list);
+        model.addAttribute("pageMaker", pageMaker);
+
         System.out.println( "idx :::: " + list.get(0).getIdx());
         log.info("결과값 : {}", list.get(0));
         return "list";

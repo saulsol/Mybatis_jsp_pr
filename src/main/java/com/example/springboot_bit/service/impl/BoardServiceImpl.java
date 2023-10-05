@@ -3,6 +3,7 @@ package com.example.springboot_bit.service.impl;
 import com.example.springboot_bit.entity.Board;
 import com.example.springboot_bit.entity.Comment;
 import com.example.springboot_bit.entity.Member;
+import com.example.springboot_bit.entity.PageInfo;
 import com.example.springboot_bit.myBatis.mapper.BoardMapper;
 import com.example.springboot_bit.service.BoardService;
 import lombok.RequiredArgsConstructor;
@@ -19,9 +20,9 @@ public class BoardServiceImpl implements BoardService {
     // @RequiredArgsConstructor => private final
 
     @Override
-    public List<Board> getList() {
+    public List<Board> getList(PageInfo pageInfo) {
 
-        List<Board> list = boardMapper.getList();
+        List<Board> list = boardMapper.getList(pageInfo);
 
         return list;
     }
@@ -94,6 +95,11 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public String duplicateMemberCheck(String memId) {
         return boardMapper.duplicateMemberCheck(memId);
+    }
+
+    @Override
+    public int totalCount() {
+        return boardMapper.totalCount();
     }
 
 

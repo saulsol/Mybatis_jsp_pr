@@ -3,13 +3,14 @@ package com.example.springboot_bit.myBatis.mapper;
 import com.example.springboot_bit.entity.Board;
 import com.example.springboot_bit.entity.Comment;
 import com.example.springboot_bit.entity.Member;
+import com.example.springboot_bit.entity.PageInfo;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 @Mapper
 public interface BoardMapper {
-    public List<Board> getList();
+    public List<Board> getList(PageInfo pageInfo);
 
     public void insert(Board board);
 
@@ -34,4 +35,6 @@ public interface BoardMapper {
     public void insertMember(Member member);
 
     public String duplicateMemberCheck(String memId);
+
+    public int totalCount();
 }

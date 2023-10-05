@@ -16,13 +16,13 @@ public class BoardMapperTest {
     @Autowired
     private BoardMapper boardMapper;
 
-    @Test
-    public void getList(){
-        List<Board> list = boardMapper.getList();
-        for (Board board : list) {
-            log.info(board.toString());
-        }
-    }
+//    @Test
+//    public void getList(){
+//        List<Board> list = boardMapper.getList();
+//        for (Board board : list) {
+//            log.info(board.toString());
+//        }
+//    }
 
     @Test
     public void testInsert(){

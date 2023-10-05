@@ -103,6 +103,37 @@
 
                 </table>
 
+                <!--패이징 처리 뷰 -->
+                <div class="pull-right" >
+                    <ul class="pagination">
+                        <c:if test="${pageMaker.prev}">
+                            <li class="paginate_button previous">
+                                <a href="${ctx}/board/list?page=${pageMaker.startPage-1}">◀</a>
+                            </li>
+                        </c:if>
+
+
+                            <c:forEach var="pageNum" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+                                    <c:if test="${pageMaker.pageInfo.page!=pageNum}">
+                                        <li><a href="${ctx}/board/list?page=${pageNum}">${pageNum}</a></li>
+                                    </c:if>
+                                    <c:if test="${pageMaker.pageInfo.page==pageNum}">
+                                        <li><a href="${ctx}/board/list?page=${pageNum}">${pageNum}</a></li>
+                                    </c:if>
+                            </c:forEach>
+
+
+                        <c:if test="${pageMaker.next}">
+                            <li class="paginate_button next">
+                                <a href="${ctx}/board/list?page=${pageMaker.endPage+1}">▶</a>
+                            </li>
+                        </c:if>
+                    </ul>
+                </div>
+
+
+
+
                 <div id="myModal" class="modal fade" role="dialog">
                     <div class="modal-dialog">
 

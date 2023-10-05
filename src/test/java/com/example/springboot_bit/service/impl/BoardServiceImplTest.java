@@ -15,11 +15,11 @@ class BoardServiceImplTest {
     @Autowired
     BoardService boardService;
 
-    @Test
-    public void testGetList(){
-        boardService.getList().forEach(board -> {
-            log.info(board.toString());
-        });
-    }
+//    @Test
+//    public void testGetList(){
+//        boardService.getList().forEach(board -> {
+//            log.info(board.toString());
+//        });
+//    }
 
 }

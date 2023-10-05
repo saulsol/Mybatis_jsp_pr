@@ -4,8 +4,9 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.springboot_bit.myBatis.mapper.BoardMapper">
 
-    <select id="getList" resultType="com.example.springboot_bit.entity.Board">
-        SELECT * FROM tblBoard ORDER BY boardGroup desc;
+    <select id="getList" parameterType="com.example.springboot_bit.entity.PageInfo" resultType="com.example.springboot_bit.entity.Board">
+        SELECT * FROM tblBoard ORDER BY boardGroup desc
+        LIMIT #{pageStart}, #{perPageNum}
     </select>
 
     <insert id="insert" parameterType="com.example.springboot_bit.entity.Board">
@@ -76,6 +77,10 @@
 
     <select id="duplicateMemberCheck" parameterType="String" resultType="String">
         SELECT memId FROM tblMember WHERE memId = #{memId}
+    </select>
+
+    <select id="totalCount" resultType="Integer">
+        SELECT count(*) FROM tblBoard
     </select>
 
 </mapper>
