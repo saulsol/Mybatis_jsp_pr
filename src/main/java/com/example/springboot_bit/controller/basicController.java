@@ -10,5 +10,6 @@ public class basicController {
     public String basic(){
         return "page";
     }
+    //
 
 }
