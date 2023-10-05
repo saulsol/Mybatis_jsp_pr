@@ -1,9 +1,6 @@
 package com.example.springboot_bit.service.impl;
 
-import com.example.springboot_bit.entity.Board;
-import com.example.springboot_bit.entity.Comment;
-import com.example.springboot_bit.entity.Member;
-import com.example.springboot_bit.entity.PageInfo;
+import com.example.springboot_bit.entity.*;
 import com.example.springboot_bit.myBatis.mapper.BoardMapper;
 import com.example.springboot_bit.service.BoardService;
 import lombok.RequiredArgsConstructor;
@@ -102,5 +99,13 @@ public class BoardServiceImpl implements BoardService {
         return boardMapper.totalCount();
     }
 
+    @Override
+    public List<Board> searchBoard(SearchDto search) {
+        return boardMapper.searchBoard(search);
+    }
 
+    @Override
+    public int searchCount(PostSearch search) {
+        return boardMapper.searchCount(search);
+    }
 }

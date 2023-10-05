@@ -71,6 +71,19 @@
                     </form>
                 </c:if>
 
+                <c:if test="${!empty loginSuccess}">
+                    <form action="${ctx}/board/search" method="post" >
+                        <div class="input-group ">
+                            <input type="text" name="content" class="form-control pull-right" placeholder="검색">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit">
+                                    <i class="glyphicon glyphicon-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </c:if>
+
             </div>
             <div class="panel-body">
                 <table class="table table-bordered table-hover">

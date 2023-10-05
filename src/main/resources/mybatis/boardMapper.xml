@@ -83,4 +83,21 @@
         SELECT count(*) FROM tblBoard
     </select>
 
+    <select id="searchBoard" parameterType="com.example.springboot_bit.entity.SearchDto"
+            resultType="com.example.springboot_bit.entity.Board">
+        SELECT * FROM tblBoard WHERE (title LIKE CONCAT('%', #{search.title}, '%')
+        OR content LIKE CONCAT('%', #{search.content}, '%'))
+        ORDER BY idx
+        LIMIT #{pageInfo.pageStart}, #{pageInfo.perPageNum}
+    </select>
+
+    <select id="searchCount" resultType="Integer"
+            parameterType="com.example.springboot_bit.entity.PostSearch">
+
+        SELECT count(*) FROM tblBoard WHERE (title LIKE CONCAT('%', #{title}, '%')
+        OR content LIKE CONCAT('%', #{content}, '%'))
+    </select>
+
+
+
 </mapper>

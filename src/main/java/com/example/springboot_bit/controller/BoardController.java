@@ -1,9 +1,6 @@
 package com.example.springboot_bit.controller;
 
-import com.example.springboot_bit.entity.Board;
-import com.example.springboot_bit.entity.Comment;
-import com.example.springboot_bit.entity.PageInfo;
-import com.example.springboot_bit.entity.PageMaker;
+import com.example.springboot_bit.entity.*;
 import com.example.springboot_bit.service.BoardService;
 import com.example.springboot_bit.service.impl.BoardServiceImpl;
 import lombok.Getter;
@@ -143,6 +140,33 @@ public class BoardController {
         boardService.insertComment(comment);
 
         return "redirect:/board/get?idx="+comment.getBoardId();
+    }
+
+    @RequestMapping("/search")
+    public String search(@ModelAttribute PageInfo pageInfo, String content, Model model){
+
+        PostSearch search = new PostSearch(content, content);
+        List<Board> matchBoardList = boardService.searchBoard(SearchDto
+                .builder()
+                        .search(search)
+                        .pageInfo(pageInfo)
+                .build()
+        );
+
+        log.info("검색 키워드 : " + search.getContent());
+
+        log.info("검색되는 게시물의 수 : " + matchBoardList.size());
+
+        PageMaker pageMaker = new PageMaker();
+        pageMaker.setPageInfo(pageInfo);
+        pageMaker.setTotalCount(boardService.searchCount(search));
+        log.info("검색되는 게시물의 수 : " + boardService.searchCount(search));
+
+        model.addAttribute("content", content);
+        model.addAttribute("pageMaker", pageMaker);
+        model.addAttribute("matchBoardList", matchBoardList);
+
+        return "search";
     }
 
 }

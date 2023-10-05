@@ -1,9 +1,6 @@
 package com.example.springboot_bit.myBatis.mapper;
 
-import com.example.springboot_bit.entity.Board;
-import com.example.springboot_bit.entity.Comment;
-import com.example.springboot_bit.entity.Member;
-import com.example.springboot_bit.entity.PageInfo;
+import com.example.springboot_bit.entity.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -37,4 +34,8 @@ public interface BoardMapper {
     public String duplicateMemberCheck(String memId);
 
     public int totalCount();
+    public List<Board> searchBoard(SearchDto search);
+
+    public int searchCount(PostSearch search);
+
 }
