@@ -76,11 +76,11 @@ public class BoardController {
 
         if(visitCookie != null && visitCookie.getValue().equals(request.getParameter("idx"))){
             visitCookie.setValue(request.getParameter("idx"));
-            visitCookie.setMaxAge(60 * 60 * 2);
+            visitCookie.setMaxAge(60 * 2);
             response.addCookie(visitCookie);
         }else {
             Cookie newCookie = new Cookie("visit_cookie" + request.getParameter("idx"), request.getParameter("idx"));
-            newCookie.setMaxAge(60 * 60 * 2);
+            newCookie.setMaxAge(60 * 2);
             response.addCookie(newCookie);
             boardService.addBoardCount(idx);
         }
